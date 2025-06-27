@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-stylish-app-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: my-stylish-app
+  template:
+    metadata:
+      labels:
+        app: my-stylish-app
+    spec:
+      containers:
+      - name: my-stylish-app-container
+        image: my-stylish-app:1.0
+        imagePullPolicy: Never # Crucial for using local Minikube images
+        ports:
+        - containerPort: 8080
+        # This 'env' section is where we inject our configuration
+        env:
+        # Load the API_KEY from our Secret object
+        - name: API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: my-stylish-app-secret # The name of the Secret object
+              key: API_KEY               # The key within that Secret to use
+        # This 'envFrom' is a shortcut to load all keys from a ConfigMap
+        envFrom:
+        - configMapRef:
+            name: my-stylish-app-config # The name of the ConfigMap object

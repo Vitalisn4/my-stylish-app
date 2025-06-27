@@ -1,0 +1,9 @@
+{
+  "name": "my-stylish-app",
+  "version": "1.0.0",
+  "description": "K8s app with configs and secrets",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

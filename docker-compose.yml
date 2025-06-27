@@ -1,0 +1,11 @@
+version: '3.8'
+services:
+  webapp:
+    build: .
+    ports:
+      - "8080:8080"
+    # This shows how you would provide the same config in a Docker Compose environment
+    environment:
+      - APP_TITLE=Hello from Docker Compose!
+      - THEME_COLOR=#17a2b8
+      - API_KEY=my-super-secret-key-12345
