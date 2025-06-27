@@ -3,12 +3,11 @@ kind: Service
 metadata:
   name: my-stylish-app-service
 spec:
-  # NodePort makes the service accessible from outside the cluster
   type: NodePort
   selector:
-    # This must match the labels on the pods in the Deployment
     app: my-stylish-app
   ports:
     - protocol: TCP
-      port: 8080       # Port on the service inside the cluster
-      targetPort: 8080 # Port on the container
+      port: 8080
+      targetPort: 8080
+      nodePort: 30001

@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: my-stylish-app-deployment
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: my-stylish-app
@@ -14,8 +14,8 @@ spec:
     spec:
       containers:
       - name: my-stylish-app-container
-        image: my-stylish-app:1.0
-        imagePullPolicy: Never # Crucial for using local Minikube images
+        image: demo
+        imagePullPolicy: Never # Use local image loaded into k3s node
         ports:
         - containerPort: 8080
         # This 'env' section is where we inject our configuration

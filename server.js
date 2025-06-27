@@ -6,7 +6,7 @@ const port = 8080;
 
 // Read configuration from environment variables, with defaults
 const appTitle = process.env.APP_TITLE || 'Default Title';
-const themeColor = process.env.THEME_COLOR || '#333';
+const themeColor = process.env.THEME_COLOR || '#00bfff';
 const apiKey = process.env.API_KEY;
 
 // Check if the API Key from the environment matches our expected secret value
@@ -14,6 +14,8 @@ let apiKeyStatus = 'Not Set or Incorrect!';
 if (apiKey && apiKey === 'my-super-secret-key-12345') {
   apiKeyStatus = 'Successfully Loaded!';
 }
+
+app.use(express.json()); // Add this to parse JSON bodies
 
 app.get('/', function(req, res) {
   // Read the HTML template from the file
@@ -30,6 +32,16 @@ app.get('/', function(req, res) {
       
     res.send(finalHtml);
   });
+});
+
+// Add this API endpoint for login
+app.post('/api/login', (req, res) => {
+  const { accessKey } = req.body;
+  if (accessKey && accessKey === apiKey) {
+    res.status(200).json({ message: 'Login successful' });
+  } else {
+    res.status(401).json({ message: 'Invalid access key' });
+  }
 });
 
 app.listen(port, () => {

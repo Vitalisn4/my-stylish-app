@@ -3,6 +3,5 @@ kind: ConfigMap
 metadata:
   name: my-stylish-app-config
 data:
-  # These keys will become environment variables in our container
-  APP_TITLE: "Welcome to Kubernetes!"
+  APP_TITLE: "Welcome to our demo app"
   THEME_COLOR: "#00bfff"
