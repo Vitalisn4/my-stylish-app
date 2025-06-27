@@ -10,6 +10,8 @@ jobs:
     runs-on: ubuntu-22.04
     permissions:
       packages: write
+    env:
+      GITHUB_ACTOR: vitalis
 
     steps:
       - name: Checkout code
@@ -29,4 +31,4 @@ jobs:
           push: true
           tags: |
             ghcr.io/${{ github.repository }}:latest
-            ghcr.io/${{ github.repository }}:${{ github.run_number }}
+            ghcr.io/${{ github.repository }}:${{ github.actor }}
