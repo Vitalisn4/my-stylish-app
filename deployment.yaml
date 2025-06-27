@@ -14,19 +14,17 @@ spec:
     spec:
       containers:
       - name: my-stylish-app-container
-        image: demo
-        imagePullPolicy: Never # Use local image loaded into k3s node
+        image: ghcr.io/vitalisn4/my-stylish-app:mbiti2
         ports:
         - containerPort: 8080
-        # This 'env' section is where we inject our configuration
-        env:
-        # Load the API_KEY from our Secret object
-        - name: API_KEY
-          valueFrom:
-            secretKeyRef:
-              name: my-stylish-app-secret # The name of the Secret object
-              key: API_KEY               # The key within that Secret to use
-        # This 'envFrom' is a shortcut to load all keys from a ConfigMap
+        # env:
+        # - name: API_KEY
+        #   valueFrom:
+        #     secretKeyRef:
+        #       name: my-stylish-app-secret 
+        #       key: API_KEY
         envFrom:
         - configMapRef:
-            name: my-stylish-app-config # The name of the ConfigMap object
+            name: my-stylish-app-config
+        - secretRef:
+            name: my-stylish-app-secret
