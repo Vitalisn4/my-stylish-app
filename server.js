@@ -10,8 +10,8 @@ const themeColor = process.env.THEME_COLOR || '#00bfff';
 const apiKey = process.env.API_KEY;
 
 // Check if the API Key from the environment matches our expected secret value
-let apiKeyStatus = 'Not Set or Incorrect!';
-if (apiKey && apiKey === 'hello') {
+let apiKeyStatus = 'Incorrect!';
+if (apiKey === 'hello') {
   apiKeyStatus = 'Successfully Loaded!';
 }
 
