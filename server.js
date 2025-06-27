@@ -11,7 +11,7 @@ const apiKey = process.env.API_KEY;
 
 // Check if the API Key from the environment matches our expected secret value
 let apiKeyStatus = 'Not Set or Incorrect!';
-if (apiKey && apiKey === 'my-super-secret-key-12345') {
+if (apiKey && apiKey === 'hello') {
   apiKeyStatus = 'Successfully Loaded!';
 }
 
