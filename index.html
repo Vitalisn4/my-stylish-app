@@ -64,6 +64,11 @@
         document.getElementById('login-container').style.display = 'none';
         document.getElementById('main-content').style.display = 'block';
         document.getElementById('welcome-message').textContent = 'You are now logged in!';
+        // Update API Key Status
+        const apiKeyStatusElem = document.querySelector('strong');
+        if (apiKeyStatusElem) {
+          apiKeyStatusElem.textContent = 'Set';
+        }
       } else {
         document.getElementById('login-error').style.display = 'block';
       }
